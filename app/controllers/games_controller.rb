@@ -7,7 +7,9 @@ class GamesController < ApplicationController
 
   def create
     paramh = game_params.to_h
-    @game = Game.new(winner: paramh["winner"], loser: paramh["loser"], turns: paramh["turns"])
+    winner = User.find_or_create_by(username: paramh["winner"])
+    loser = User.find_or_create_by(username: paramh["loser"])
+    @game = Game.new(winner: winner, loser: loser, turns: paramh["turns"])
     if @game.save
       render json: @game, status: :created
     else

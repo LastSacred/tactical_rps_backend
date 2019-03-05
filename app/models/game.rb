@@ -5,4 +5,6 @@ class Game < ApplicationRecord
   def players
     [winner, loser]
   end
+
+  accepts_nested_attributes_for :user
 end
