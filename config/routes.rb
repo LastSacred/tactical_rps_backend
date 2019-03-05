@@ -1,0 +1,7 @@
+Rails.application.routes.draw do
+  resources :games only: [:create]
+  resources :users only: [:create, :record]
+
+  get '/leaderboard/', to: 'leaderboard#show'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
