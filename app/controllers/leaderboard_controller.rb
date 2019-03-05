@@ -6,11 +6,11 @@ class LeaderboardController < ApplicationController
     users.each do |u|
       entry = {}
       entry["username"] = u.username
-      entry["wins"] = Games.where(winner: u).count
-      entry["losses"] = Games.where(loser: u).count
+      entry["wins"] = Game.where(winner: u).count
+      entry["losses"] = Game.where(loser: u).count
       leaderboard.push(entry)
     end
-    @sorted_leaderboard = leaderboard.sort_by{|k| k["wins"]}
+    @sorted_leaderboard = leaderboard.sort_by{|k| k["wins"]}.reverse
     render json: @sorted_leaderboard
   end
 

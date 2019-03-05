@@ -1,9 +1,9 @@
 class GamesController < ApplicationController
 
-  def index
-    @games = Game.all
-    render json: @games.as_json()
-  end
+  # def index
+  #   @games = Game.all
+  #   render json: @games.as_json()
+  # end
 
   def create
     paramh = game_params.to_h
