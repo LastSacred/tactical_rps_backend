@@ -14,6 +14,7 @@ class GamesController < ApplicationController
       render json: @game, status: :created
     else
       render json: @game.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   private
